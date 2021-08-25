@@ -1,53 +1,48 @@
-package RESTController;
+package BattleFlyServer.RESTController;
+
+import BattleFlyServer.DBService.CommonService;
 
 import org.postgresql.shaded.com.ongres.scram.common.util.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import DBService.CommonService;
-
-import entity.PilotResult;
-import entity.PilotResultKey;
-import entity.Sortie;
-import entity.Event;
-import entity.Pilot;
-
-
-import repository.EventRepository;
-import repository.SortieRepository;
-import repository.PilotRepository;
-import repository.PilotResultRepository;
+import BattleFlyServer.entity.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/pilot")
-public class Controller {
+public class PilotController {
 
     @Autowired
     private CommonService service;
 
     @GetMapping("/list")
     public List<Pilot> list() {
-        return service.list();
+        return service.listPilots();
     }
 
+    /*
     @GetMapping(value = "/pilotbyid/{id}")
     public Pilot findById(@PathVariable("id") Integer id) {
         //return RestPreconditions.checkFound(service.findById(id));
-        return service.findById(id);
+        return service.findPilotById(id);
     }
 
-    @GetMapping(value = "/resultbypilot/{id1}")
-    public PilotResult resultById(@PathVariable("id1") Integer id1) {
-        return service.resultById(id1);
-    }
+     */
 
+    @GetMapping(value = "/resultbypilot/{id}")
+    public List<PilotResult> resultById(@PathVariable("id") Integer id) {
+        return service.displayPilot(id);
+    }
+/*
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public int create(@RequestBody Pilot pilot) {
         Preconditions.checkNotNull(pilot.getName(),"Name");
-        return service.create(pilot);
+        return service.createPilot(pilot);
     }
+
+ */
 }

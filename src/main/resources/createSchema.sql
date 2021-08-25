@@ -48,6 +48,16 @@ CREATE TABLE aircombat.pilotresult (
 	CONSTRAINT pilotresult_pkey PRIMARY KEY (pilotid,sortieid)
 );
 
+CREATE TABLE aircombat.event (
+	eventid int4 NOT NULL DEFAULT nextval('aircombat.event_eventid'),
+	name varchar(100) NOT NULL,
+	location varchar(255),
+	eventdate date,
+	eventstatus varchar(100),
+	filename varchar(255),
+
+	CONSTRAINT event_pkey PRIMARY KEY (eventid)
+);
 
 CREATE TABLE aircombat.sortie (
 	sortieid int4 NOT NULL DEFAULT nextval('aircombat.sortie_sortieid'),
@@ -58,12 +68,4 @@ CREATE TABLE aircombat.sortie (
 	CONSTRAINT sortie_pkey PRIMARY KEY (sortieid)
 );
 
-CREATE TABLE aircombat.event (
-	eventid int4 NOT NULL DEFAULT nextval('aircombat.event_eventid'),
-	name varchar(100) NOT NULL,
-	location varchar(255),
-	eventdate date,
-	eventstatus varchar(100),
 
-	CONSTRAINT event_pkey PRIMARY KEY (eventid)
-);

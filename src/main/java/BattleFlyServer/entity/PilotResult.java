@@ -1,4 +1,4 @@
-package entity;
+package BattleFlyServer.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;

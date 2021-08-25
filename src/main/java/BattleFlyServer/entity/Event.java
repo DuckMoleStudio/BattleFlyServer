@@ -1,4 +1,4 @@
-package entity;
+package BattleFlyServer.entity;
 
 import lombok.*;
 
@@ -29,6 +29,7 @@ public class Event {
     private String location;
     private Date eventDate;
     private String eventStatus;
+    private String fileName;
 
     @Override
     public String toString() { // need we?
